@@ -73,8 +73,8 @@ preamble: |
 # tex file. Don't forget to rename the bib file and change this example value.
 bibliography: sandbox.bib
 
-output: rticles::rjournal_article  # this works!
-#output: rjtools::rjournal_web_article # this works too!
+#output: rticles::rjournal_article  # this works!
+output: rjtools::rjournal_web_article # this works too!
 header-includes:
    - \usepackage{subfig}
 
