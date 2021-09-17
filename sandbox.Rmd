@@ -119,7 +119,7 @@ Recognizing \CRANpkg{learnr} documents are themselves R Shiny web apps, our appr
 Here, we first show the skeleton of a R Markdown (.Rmd) file for a \CRANpkg{learnr} document (Figure 1). Notice that it is very similar to a typical .Rmd file where there is a mixture of narratives written in markdown and R code chunks, in addtional to a YAML header. However, there are a couple of important exceptions, namely the use of the ```exercise``` chunk option (i.e. editable and executable code boxes) and different output type in the YAML header.
 
 
-```{r, warning=FALSE, message=FALSE, include = FALSE, comment='\n', echo=FALSE, results='asis'}
+```{r, warning=FALSE, message=FALSE, include = FALSE,eval=FALSE, comment='\n', echo=FALSE, results='asis'}
 cat(readLines('skeleton.Rmd'),sep='\n') #or results='hold'/'asis/tex? 'asis' doesn't show YAML header
 ```
 
