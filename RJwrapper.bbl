@@ -1,0 +1,149 @@
+\begin{thebibliography}{16}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Blair et~al.(2019)Blair, Henrys, Leeson, Watkins, Eastoe, Jarvis, and
+  Young]{Blair2019}
+G.~S. Blair, P.~Henrys, A.~Leeson, J.~Watkins, E.~Eastoe, S.~Jarvis, and P.~J.
+  Young.
+\newblock {Data Science of the Natural Environment: A Research Roadmap}.
+\newblock \emph{Frontiers in Environmental Science}, 7, aug 2019.
+\newblock ISSN 2296-665X.
+\newblock \doi{10.3389/fenvs.2019.00121}.
+\newblock URL
+  \url{https://www.frontiersin.org/article/10.3389/fenvs.2019.00121/full}.
+
+\bibitem[Carter et~al.(2019)Carter, Attia, Lopez-Jimenez, and
+  Friedman]{Carter2019}
+R.~E. Carter, Z.~I. Attia, F.~Lopez-Jimenez, and P.~A. Friedman.
+\newblock Pragmatic considerations for fostering reproducible research in
+  artificial intelligence.
+\newblock \emph{npj Digital Medicine}, 2\penalty0 (1), May 2019.
+\newblock \doi{10.1038/s41746-019-0120-2}.
+\newblock URL \url{https://doi.org/10.1038/s41746-019-0120-2}.
+
+\bibitem[Chang et~al.(2019)Chang, Cheng, Allaire, Xie, and McPherson]{shiny}
+W.~Chang, J.~Cheng, J.~Allaire, Y.~Xie, and J.~McPherson.
+\newblock \emph{shiny: Web Application Framework for R}, 2019.
+\newblock URL \url{https://CRAN.R-project.org/package=shiny}.
+\newblock R package version 1.4.0.
+
+\bibitem[Cheng and Sievert(2021)]{shinymeta}
+J.~Cheng and C.~Sievert.
+\newblock \emph{shinymeta: Export Domain Logic from Shiny using
+  Meta-Programming}, 2021.
+\newblock URL \url{https://CRAN.R-project.org/package=shinymeta}.
+\newblock R package version 0.2.0.1.
+
+\bibitem[Field(2020)]{adventr}
+A.~Field.
+\newblock \emph{{adventr: Interactive R Tutorials to Accompany Field (2016),
+  "An Adventure in Statistics"}}, 2020.
+\newblock URL \url{https://cran.r-project.org/web/packages/adventr/index.html}.
+
+\bibitem[Higgins(2021)]{rmrwr}
+P.~Higgins.
+\newblock \emph{Reproducible Medical Research with R}, 2021.
+\newblock URL \url{https://bookdown.org/pdr_higgins/rmrwr/}.
+
+\bibitem[Hollaway et~al.(2020)Hollaway, Dean, Blair, Brown, Henrys, and
+  Watkins]{Hollaway2020}
+M.~J. Hollaway, G.~Dean, G.~S. Blair, M.~Brown, P.~A. Henrys, and J.~Watkins.
+\newblock Tackling the challenges of 21st-century open science and beyond: A
+  data science lab approach.
+\newblock \emph{Patterns}, 1\penalty0 (7):\penalty0 100103, Oct. 2020.
+\newblock \doi{10.1016/j.patter.2020.100103}.
+\newblock URL \url{https://doi.org/10.1016/j.patter.2020.100103}.
+
+\bibitem[Kasprzak et~al.(2021)Kasprzak, Mitchell, Kravchuk, and
+  Timmins]{Kasprzak}
+P.~Kasprzak, L.~Mitchell, O.~Kravchuk, and A.~Timmins.
+\newblock Six years of shiny in research - collaborative development of web
+  tools in r.
+\newblock \emph{R Journal}, \penalty0 (3):\penalty0 155--162, 2021.
+\newblock URL
+  \url{https://journal.r-project.org/archive/2021/RJ-2021-009/RJ-2021-009.pdf}.
+
+\bibitem[Mose et~al.(2018)Mose, Western, and Tyrrell]{Mose2018}
+V.~N. Mose, D.~Western, and P.~Tyrrell.
+\newblock Application of open source tools for biodiversity conservation and
+  natural resource management in east africa.
+\newblock \emph{Ecological Informatics}, 47:\penalty0 35--44, Sept. 2018.
+\newblock \doi{10.1016/j.ecoinf.2017.09.006}.
+\newblock URL \url{https://doi.org/10.1016/j.ecoinf.2017.09.006}.
+
+\bibitem[Ooms(2013)]{RAppArmor}
+J.~Ooms.
+\newblock The {RAppArmor} package: Enforcing security policies in {R} using
+  dynamic sandboxing on linux.
+\newblock \emph{Journal of Statistical Software}, 55\penalty0 (7):\penalty0
+  1--34, 2013.
+\newblock URL \url{http://www.jstatsoft.org/v55/i07/}.
+
+\bibitem[Schloerke et~al.(2020)Schloerke, Allaire, and Borges]{learnr}
+B.~Schloerke, J.~Allaire, and B.~Borges.
+\newblock \emph{learnr: Interactive Tutorials for R}, 2020.
+\newblock URL \url{https://CRAN.R-project.org/package=learnr}.
+\newblock R package version 0.10.1.
+
+\bibitem[Stall et~al.(2019)Stall, Yarmey, Cutcher-Gershenfeld, Hanson, Lehnert,
+  Nosek, Parsons, Robinson, and Wyborn]{Stall2019}
+S.~Stall, L.~Yarmey, J.~Cutcher-Gershenfeld, B.~Hanson, K.~Lehnert, B.~Nosek,
+  M.~Parsons, E.~Robinson, and L.~Wyborn.
+\newblock {Make scientific data FAIR}, 2019.
+\newblock ISSN 14764687.
+
+\bibitem[Tso(2021)]{EIDC}
+C.-H.~M. Tso.
+\newblock R shiny sandbox app demonstrator for advancing reproducible research.
+\newblock NERC Environmental Information Data Centre. (Model).
+  \url{https://doi.org/10.5285/df57b002-2a42-4a7d-854f-870dd867618c}, 2021.
+\newblock URL
+  \url{https://doi.org/10.5285/df57b002-2a42-4a7d-854f-870dd867618c}.
+
+\bibitem[Whateley et~al.(2015)Whateley, Walker, and Brown]{Whateley2015}
+S.~Whateley, J.~D. Walker, and C.~Brown.
+\newblock A web-based screening model for climate risk to water supply systems
+  in the northeastern united states.
+\newblock \emph{Environmental Modelling {\&} Software}, 73:\penalty0 64--75,
+  Nov. 2015.
+\newblock \doi{10.1016/j.envsoft.2015.08.001}.
+\newblock URL \url{https://doi.org/10.1016/j.envsoft.2015.08.001}.
+
+\bibitem[Wilkinson et~al.(2016)Wilkinson, Dumontier, Aalbersberg, Appleton,
+  Axton, Baak, Blomberg, Boiten, {da Silva Santos}, Bourne, Bouwman, Brookes,
+  Clark, Crosas, Dillo, Dumon, Edmunds, Evelo, Finkers, Gonzalez-Beltran, Gray,
+  Groth, Goble, Grethe, Heringa, t~Hoen, Hooft, Kuhn, Kok, Kok, Lusher,
+  Martone, Mons, Packer, Persson, Rocca-Serra, Roos, van Schaik, Sansone,
+  Schultes, Sengstag, Slater, Strawn, Swertz, Thompson, {Van Der Lei}, {Van
+  Mulligen}, Velterop, Waagmeester, Wittenburg, Wolstencroft, Zhao, and
+  Mons]{Wilkinson2016a}
+M.~D. Wilkinson, M.~Dumontier, I.~J. Aalbersberg, G.~Appleton, M.~Axton,
+  A.~Baak, N.~Blomberg, J.~W. Boiten, L.~B. {da Silva Santos}, P.~E. Bourne,
+  J.~Bouwman, A.~J. Brookes, T.~Clark, M.~Crosas, I.~Dillo, O.~Dumon,
+  S.~Edmunds, C.~T. Evelo, R.~Finkers, A.~Gonzalez-Beltran, A.~J. Gray,
+  P.~Groth, C.~Goble, J.~S. Grethe, J.~Heringa, P.~A. t~Hoen, R.~Hooft,
+  T.~Kuhn, R.~Kok, J.~Kok, S.~J. Lusher, M.~E. Martone, A.~Mons, A.~L. Packer,
+  B.~Persson, P.~Rocca-Serra, M.~Roos, R.~van Schaik, S.~A. Sansone,
+  E.~Schultes, T.~Sengstag, T.~Slater, G.~Strawn, M.~A. Swertz, M.~Thompson,
+  J.~{Van Der Lei}, E.~{Van Mulligen}, J.~Velterop, A.~Waagmeester,
+  P.~Wittenburg, K.~Wolstencroft, J.~Zhao, and B.~Mons.
+\newblock {Comment: The FAIR Guiding Principles for scientific data management
+  and stewardship}.
+\newblock \emph{Scientific Data}, 2016.
+\newblock ISSN 20524463.
+\newblock \doi{10.1038/sdata.2016.18}.
+
+\bibitem[Williams and Williams(2017)]{Williams2017}
+I.~J. Williams and K.~K. Williams.
+\newblock Using an {R} shiny to enhance the learning experience of confidence
+  intervals.
+\newblock \emph{Teaching Statistics}, 40\penalty0 (1):\penalty0 24--28, Nov.
+  2017.
+\newblock \doi{10.1111/test.12145}.
+\newblock URL \url{https://doi.org/10.1111/test.12145}.
+
+\end{thebibliography}

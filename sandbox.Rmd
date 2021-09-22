@@ -1,10 +1,10 @@
 ---
 title: Advancing Reproducible Research by Publishing R Markdown Notebooks as Interactive Sandboxes Using the learnr Package
 author:
-  # good shinymeta Rstudio conf talk: https://www.youtube.com/watch?v=HK0Y40bX7JI
-  # slides: https://github.com/EmilHvitfeldt/RStudioConf2020Slides
   # see ?rjournal_article for more information, abstract 150 words
   # use latexdiff for track changes, don't forget to define latexdiff commands
+  # good shinymeta Rstudio conf talk: https://www.youtube.com/watch?v=HK0Y40bX7JI
+  # slides: https://github.com/EmilHvitfeldt/RStudioConf2020Slides
   - name: Chak Hau Michael Tso
     affiliation: UK Centre for Ecology and Hydrology
     address:
@@ -65,26 +65,37 @@ preamble: |
   \usepackage{tabularx}
   \usepackage{verbatim}
   \usepackage{longtable}
-
   \newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
-
-
-# per R journal requirement, the bib filename should be the same as the output 
-# tex file. Don't forget to rename the bib file and change this example value.
+  % for 'pander' to work in RJwrapper -- everything below needs to be added manually (fixed 22/9/2021)
+  \usepackage{lmodern}
+  \usepackage{amsmath}
+  \usepackage{ifxetex,ifluatex}
+  \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{textcomp} % provide euro and other symbols
+    \usepackage{amssymb}
+    \usepackage{unicode-math}
+    \defaultfontfeatures{Scale=MatchLowercase}
+    \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+    \usepackage[]{microtype}
+    \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+    \IfFileExists{parskip.sty}{%
+      \usepackage{parskip}
+      \setlength{\parindent}{0pt}
+      \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+    \KOMAoptions{parskip=half}}
+    hidelinks,
+    pdfcreator={LaTeX via pandoc}}
+    \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \usepackage{selnolig}  % disable illegal ligatures
 bibliography: sandbox.bib
-
 #output: rticles::rjournal_article  # this works!
-output: rjtools::rjournal_web_article # this works too!
+output: 
+  rjtools::rjournal_web_article:
+  rjtools::rjournal_pdf_article:
 header-includes:
    - \usepackage{subfig}
-
-
-# generate latex tables with latex-tables.com
-#be very careful with YAML header, easily throw latex errors
-
-#M. Tso, M. Hollaway, P. Henrys, R. Kilick, J. Watkins, G. Blair
-
-# Diff R code R package
 # https://github.com/muschellij2/diffr
 ---
 ```{r include=FALSE}
@@ -191,6 +202,7 @@ Our approach focuses on improving reproducibility by exposing parts of R script 
 knitr::include_graphics('learnr_abstraction.png')
 ```
 
+\newpage
 
 <!-- ```{=latex} -->
 <!-- \begin{table} -->
@@ -209,8 +221,6 @@ knitr::include_graphics('learnr_abstraction.png')
 <!-- ``` -->
 
 
-
-
 ```{r table1,  echo=FALSE, warning=FALSE, message=FALSE, results='hide'}
 require(pander)
 require(dplyr)
@@ -219,16 +229,16 @@ panderOptions('round', 3)
 panderOptions('keep.trailing.zeros', TRUE)
 panderOptions('keep.line.breaks', TRUE)
 table1 = tibble( Stakeholders= c("Authors", "Other researchers (those wanting to try or compare the method)",
-                                      "Other researchers (those curious about the results)",
-                                      "Data Centres",
-                                      "Funders",
-                                      "Wider research community and general public)"),
-                     Advantages = c(" 
+                                 "Other researchers (those curious about the results)",
+                                 "Data Centres",
+                                 "Funders",
+                                 "Wider research community and general public)"),
+                 Advantages = c(" 
                                      \\\n
                                      \\\n &bullet; Very little extra work required in additional to writing R markdown document.
                                       \\\n &bullet; No experience to generate web interfaces required.
                                       \\\n &bullet; Much greater impact in research output.\\\n ",
-                                    '
+                                '
                                      \\\n
                                      \\\n &bullet; A much more enriched experience to try methods and data and to test alternative hypothesis and scenarios.
                                      \\\n &bullet; No need to download data and scripts/notebooks and install packages to try a method.
@@ -250,14 +260,22 @@ table1 = tibble( Stakeholders= c("Authors", "Other researchers (those wanting to
 
 ```
 
-``` {r table1_descriptions, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE}
+``` {r table1_descriptions, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE, include=TRUE}
 pandoc.table(table1, style = "multiline", justify = "left", caption = "Advantages of the proposed approach to various stakeholders")
 ```
 
 
+## Summary and outlook
+
+We have proposed and demonstrated a rapid approach to publish R Markdown notebooks as interactive sandboxes to allow users to experiment with changes with various elements of a research output. It provides an additional level of abstraction for users to interact with research outputs and the codes that generates down. Since it can be linked to the environment and data that generated the published output and has independent document object identifiers (DOI), it is a suitable candidate to preserve research workflow while exposing parts of it to allow rapid experimentation by users. Our work is a demonstration on how we may publish a notebook from virtual research environments such as DataLabs, with data, packages, and workflow pre-loaded in a coding envrionment, accompanied by rich narratives. While this paper outlines the approach using R, the same approach can benefit other coding languages such as Python. In fact, this can already be achieved as \CRANpkg{learnr} can run Python chunks (as well as other execution engines \CRANpkg{knitr} supports such as SAS and mySQL) as long as the users generate and host the document using R. This paper contributes to the vision towards publishing interactive notebooks as standalone research outputs and the advancement of open science practices.
+
+
+## Data availability and acknowledgments
+The GB rainfall example notebook is accessible via this URL (https://cptecn-sandboxdemo.datalabs.ceh.ac.uk/) and the R Markdown file is depositied in the NERC Environmental Information Data Centre (EIDC) [@EIDC]. The DataLab code stack is available at https://github.com/NERC-CEH/datalab. We thank the DataLabs developers team (especially Iain Walmsley, UKCEH) for the assitance to deploy interactive R Markdown documents on DataLabs. This work is supported by NERC Grant NE/T006102/1, Methodologically Enhanced Virtual Labs for Early Warning of Significant or Catastrophic Change in Ecosystems: Changepoints for a Changing Planet, funded under the Constructing a Digital Environment Strategic Priority Fund. Additional support is provided by the UK Status, Change and Projections of the Environment (UK-SCAPE) programme started in 2018 and is funded by the Natural Environment Research Council (NERC) as National Capability (award number NE/R016429/1). The initial development work of DataLabs was supported by a NERC Capital bid as part of the Environmental Data Services (EDS).
+
 ```{r table2,  echo=FALSE, warning=FALSE, message=FALSE, results='hide'}
 table2 = tibble( Technology= c("R script","Static notebooks","Web apps (e.g. R Shiny)","Binder/Google Colab"),
-                     `Potential Issues` = c('
+                 `Potential Issues` = c('
                                      \\\n
                                      \\\n &bullet; Limited narrative. Needs to run all the scripts.\\\n 
                                     ','
@@ -272,7 +290,7 @@ table2 = tibble( Technology= c("R script","Static notebooks","Web apps (e.g. R S
                                      \\\n &bullet; Users change the entire notebook.
                                      \\\n &bullet; Users need to run all cells about the section they are interested.\\\n 
                                     '),
-                     `How our approach can help?` = c('  
+                 `How our approach can help?` = c('  
                                       \\\n
                                      \\\n &bullet; Much richer narrative and interactive experience.\\\n 
                                     ','
@@ -290,17 +308,12 @@ table2 = tibble( Technology= c("R script","Static notebooks","Web apps (e.g. R S
 
 ```
 
-``` {r table2_descriptions, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE}
+``` {r table2_descriptions, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE, include=TRUE}
 pandoc.table(table2, style = "grid", justify = "left", split.tables=Inf, split.cells = c(4, 10, 10), caption = "Advantages of the proposed approach to existing approaches")
 ```
 
-## Summary and outlook
-
-We have proposed and demonstrated a rapid approach to publish R Markdown notebooks as interactive sandboxes to allow users to experiment with changes with various elements of a research output. It provides an additional level of abstraction for users to interact with research outputs and the codes that generates down. Since it can be linked to the environment and data that generated the published output and has independent document object identifiers (DOI), it is a suitable candidate to preserve research workflow while exposing parts of it to allow rapid experimentation by users. Our work is a demonstration on how we may publish a notebook from virtual research environments such as DataLabs, with data, packages, and workflow pre-loaded in a coding envrionment, accompanied by rich narratives. While this paper outlines the approach using R, the same approach can benefit other coding languages such as Python. In fact, this can already be achieved as \CRANpkg{learnr} can run Python chunks (as well as other execution engines \CRANpkg{knitr} supports such as SAS and mySQL) as long as the users generate and host the document using R. This paper contributes to the vision towards publishing interactive notebooks as standalone research outputs and the advancement of open science practices.
 
 
-## Data availability and acknowledgments
-The GB rainfall example notebook is accessible via this URL (https://cptecn-sandboxdemo.datalabs.ceh.ac.uk/) and the R Markdown file is depositied in the NERC Environmental Information Data Centre (EIDC) [@EIDC]. The DataLab code stack is available at https://github.com/NERC-CEH/datalab. We thank the DataLabs developers team (especially Iain Walmsley, UKCEH) for the assitance to deploy interactive R Markdown documents on DataLabs. This work is supported by NERC Grant NE/T006102/1, Methodologically Enhanced Virtual Labs for Early Warning of Significant or Catastrophic Change in Ecosystems: Changepoints for a Changing Planet, funded under the Constructing a Digital Environment Strategic Priority Fund. Additional support is provided by the UK Status, Change and Projections of the Environment (UK-SCAPE) programme started in 2018 and is funded by the Natural Environment Research Council (NERC) as National Capability (award number NE/R016429/1). The initial development work of DataLabs was supported by a NERC Capital bid as part of the Environmental Data Services (EDS).
 
 
 ```{r, include=FALSE ,warning=FALSE, message=FALSE, comment='\n'}
