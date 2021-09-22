@@ -13,9 +13,10 @@ The R Journal
 Dear Professor Cook,
 \bigskip
 
-Please consider our article titled "ToOoOlTiPs: An R Package for Customizable Tooltips in Interactive Graphics" for publication in the R Journal.
+Please consider our article titled "Advancing Reproducible Research by Publishing R Markdown Notebooks as Interactive Sandboxes Using the learnr Package
+" for publication in the R Journal.
 
-The manuscript introduces the new package called `ToOoOlTiPs` which provides examples on how to use interactive graphics in journal articles, and general tips for making an interesting contribution.
+The manuscript introduces a new application of the 'learnr' package to help authors to make elements of their research analysis more readily reproducible to users.
 
 We believe the readers of the R Journal will find this article helpful for their work because it provides generally useful instructions that will work for many purposes. 
 
@@ -27,15 +28,12 @@ Regards,
     
     
     
-Quietest Quokka  
-Department of Letter Q  
-University of Little Mates  
-Somewhere, Australia  
-qquo@ulm.edu
+Michael Tso
+
+Environmental Data Science  
+UK Centre for Ecology and Hydrology  
+Lancaster, United Kingdom  
+mtso@ceh.ac.uk
 
 \bigskip
 
-NOTES: Modify this file with information about your article. 
-
-1. It may be invisible to you, so be aware that after each address line there are two spaces, this makes the line break correctly.
-2. It is also reasonable to submit an .md format of your motivating letter instead of a pdf. 
