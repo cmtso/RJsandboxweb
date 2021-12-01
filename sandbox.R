@@ -11,16 +11,16 @@ knitr::opts_chunk$set(out.width = "\\textwidth")
  cat(readLines('skeleton.Rmd'),sep='\n') #or results='hold'/'asis/tex? 'asis' doesn't show YAML header
 
 
-## ----fig_skeleton, echo=FALSE, fig.cap='A comparison of minimal examples of a typical .Rmd document and a .Rmd document for an interactive sandbox app.', fig.subcap=c('A typical .Rmd file', 'A sandbox app .Rmd file'), fig.ncol = 2, fig.align='center', out.width='.49\\linewidth'----
+## ----fig-skeleton, echo=FALSE, fig.cap='A comparison of minimal examples of a typical .Rmd document and a .Rmd document for an interactive sandbox app.', fig.subcap=c('A typical .Rmd file', 'A sandbox app .Rmd file'), fig.ncol = 2, fig.align='center', out.width='.49\\linewidth'----
 knitr::include_graphics('skeleton-md.png')
 knitr::include_graphics('skeleton.png')
 
 
-## ----fig2, echo=FALSE, fig.cap='A screenshot of the GB rainfall interactive notebook site. The main feature is the code box. When the site loads, the code that generates published version of the figure is in the box and published version of the figure is below it. Users can make edits and re-run the code in the code box and the figure will update accordingly. Users can use the "Start Over" button to see the published version of the code at any point without refreshing the entire site.'----
+## ----fig2, echo=FALSE, fig.cap='A screenshot of the GB rainfall interactive notebook site. The main feature is the code box. When the site loads, the code that generates the published version of the figure is in the box and the published version of the figure is below it. Users can make edits and re-run the code in the code box and the figure will update accordingly. Users can use the "Start Over" button to see the published version of the code at any point without refreshing the entire site.'----
 knitr::include_graphics('GB_notebook_screenshot.png')
 
 
-## ----fig1, echo=FALSE, fig.cap='The various levels of abstraction of various types of R documents. Our approach fills nicely the gap between R Markdown or Jupyter notebooks and R Shiny apps.'----
+## ----fig1, echo=FALSE, fig.cap='The various levels of abstraction of various types of R documents. Our approach fills nicely the gap between R Markdown or Jupyter notebooks and Shiny apps.'----
 knitr::include_graphics('learnr_abstraction.png')
 
 
@@ -63,8 +63,19 @@ table1 = tibble( Stakeholders= c("Authors", "Other researchers (those wanting to
 
 
 
-## ----table1_descriptions, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE, include=TRUE----
-pandoc.table(table1, style = "multiline", justify = "left", caption = "Advantages of the proposed approach to various stakeholders")
+## ----table1-descriptionsb, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE, include=TRUE----
+cap1 = function(is_latex){
+  if(is_latex==TRUE) {
+    "Advantages of the proposed approach to various stakeholders"} else{
+    "Table 1: Advantages of the proposed approach to various stakeholders"
+  }}
+
+pandoc.table(table1, style = "multiline", justify = "left", caption = cap1(knitr::is_latex_output()) )
+
+
+## ----table1-descriptions, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE, include=FALSE----
+
+pandoc.table(table1, style = "multiline", justify = "left", caption = 'abc' )
 
 
 ## ----table2,  echo=FALSE, warning=FALSE, message=FALSE, results='hide'--------
@@ -78,11 +89,11 @@ table2 = tibble( Technology= c("R script","Static notebooks","Web apps (e.g. R S
                                     ','
                                      \\\n
                                      \\\n &bullet; While web apps helpful to some stakeholders, it can be too high-level to some.
-                                     \\\n &bullet; Lots of extra to create web interface.
+                                     \\\n &bullet; Lots of extra work to create web interface.
                                      \\\n &bullet; Does not expose the code to generate results.\\\n 
                                     ','
                                      \\\n &bullet; Users change the entire notebook.
-                                     \\\n &bullet; Users need to run all cells about the section they are interested.\\\n 
+                                     \\\n &bullet; Users need to run all cells about the section they are interested in.\\\n 
                                     '),
                  `How our approach can help?` = c('  
                                       \\\n
@@ -97,13 +108,18 @@ table2 = tibble( Technology= c("R script","Static notebooks","Web apps (e.g. R S
                                      \\\n &bullet; Users can run the code snippets live.\\\n 
                                     ','
                                      \\\n &bullet; A much more enriched and guided experience.
-                                     \\\n &bullet; Users can choose to only run the sandboxes they are interested.\\\n 
+                                     \\\n &bullet; Users can choose to only run the sandboxes they are interested in.\\\n 
                                     ')) 
 
 
 
-## ----table2_descriptions, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE, include=TRUE----
-pandoc.table(table2, style = "grid", justify = "left", split.tables=Inf, split.cells = c(4, 10, 10), caption = "Advantages of the proposed approach to existing approaches")
+## ----table2-descriptions, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE, include=TRUE----
+cap2 = function(is_latex){
+  if(is_latex==TRUE) {
+    "Advantages of the proposed approach to existing approaches"} else{
+    "Table 2: Advantages of the proposed approach to existing approaches"
+  }}
+pandoc.table(table2, style = "grid", justify = "left", split.tables=Inf, split.cells = c(4, 10, 10), caption = cap2(knitr::is_latex_output()))
 
 
 ## ---- include=FALSE ,warning=FALSE, message=FALSE, comment='\n'---------------
