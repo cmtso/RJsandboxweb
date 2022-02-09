@@ -10,17 +10,18 @@ Killick, Peter Henrys, Don Monteith, John Watkins, and Gordon Blair}
 Various R packages and best practices have played a pivotal role to
 promote the Findability, Accessibility, Interoperability, and Reuse
 (FAIR) principles of open science. For example, (1) well-documented R
-scripts and notebooks with rich narratives are deposited at a trusted
-data centre, (2) R Markdown interactive notebooks can be run on-demand
-as a web service, and (3) R Shiny web apps provide nice user interfaces
-to explore research outputs. However, notebooks require users to go
-through the entire analysis, while Shiny apps do not expose the
-underlying code and require extra work for UI design. We propose using
-the `learnr' package to expose certain code chunks in R Markdown so that
-users can readily experiment with them in guided, editable, isolated,
-executable, and resettable code sandboxes. Our approach does not replace
-the existing use of notebooks and Shiny apps, but it adds another level
-of abstraction between them to promote reproducible science.
+scripts and notebooks (e.g.~R Markdown documents) with rich narratives
+are deposited at a trusted data centre, (2) notebooks can be run
+on-demand interactively as a web service, and (3) Shiny web apps provide
+nice user interfaces to explore research outputs. However, notebooks
+require users to go through the entire analysis, while Shiny apps do not
+expose the underlying code and require extra work for UI design. We
+propose using the `learnr' package to expose certain code chunks in R
+Markdown so that users can readily experiment with them in guided,
+editable, isolated, executable, and resettable code sandboxes. Our
+approach does not replace the existing use of notebooks and Shiny apps,
+but it adds another level of abstraction between them to promote
+reproducible science.
 }
 
 \hypertarget{introduction}{%
@@ -29,47 +30,48 @@ of abstraction between them to promote reproducible science.
 There has been considerable recognition to the need to promote open and
 reproducible science in the past decade. The FAIR principles
 \citep{Wilkinson2016a, Stall2019}
-(\url{https://www.go-fair.org/fair-principles/}) of reproducble research
-are now known to most scientists. While significant advances have been
-made through the adoption of various best practices and policies
-(e.g.~requirements from funders and publishers to archive data and
-source code, metadata standards), there remains considerable barriers to
-further advance open science and meet reproducible science needs. One of
-such issues is the availability of various levels of abstraction of the
-same underlying analysis and code base to collaborate and engage with
-different stakeholders of diverse needs \citep{Blair2019, Hollaway2020}.
-For complex analysis or analysis that utilizes a more advanced computing
-environment, it is essential to provide the capability to allow users to
-interact with the analysis at a higher level.
+(\url{https://www.go-fair.org/fair-principles/}) of reproducible
+research are now known to most scientists. While significant advances
+have been made through the adoption of various best practices and
+policies (e.g.~requirements from funders and publishers to archive data
+and source code, metadata standards), there remains considerable
+barriers to further advance open science and meet reproducible science
+needs. One of such issues is the availability of various levels of
+abstraction of the same underlying analysis and code base to collaborate
+and engage with different stakeholders of diverse needs
+\citep{Blair2019, Hollaway2020}. For complex analysis or analysis that
+utilizes a more advanced computing environment, it is essential to
+provide the capability to allow users to interact with the analysis at a
+higher level.
 
 Existing approach to reproducible research focuses on either documenting
 an entire analysis or allows user-friendly interaction. Within the R
-ecosystem, R scripts and notebooks allow reserachers to work together
+ecosystem, R scripts and notebooks allow researchers to work together
 and others to view the entire workflow, while Shiny apps \citep{shiny}
 allows rapid showcase of methods and research outcomes to users with
-less experience. R Shiny has been widely adopted to share research
-output and engage stakeholders since its conception in 2013. A recent
-review \citep{Kasprzak} shows that bioinformatics is the subject with
-the most Shiny apps published in journals while earth and envrironmental
-science ranks second. Shiny apps are especially helpful to create
-reproducible analysis \citep[e.g.~examples in][]{Hollaway2020} and
-explore different scenarios \citep[e.g.][]{Whateley2015, Mose2018}.
-Finally, the interactivity of Shiny apps makes it an excellent tool for
-teaching \citep[e.g.][]{Williams2017, adventr}. However, not all users
-fit nicely into this dichotomy. Some users may only want to adopt a
-small fraction of an analysis for their work, while others may simply
-want to modify a few parts of the analysis in order to test an
-alternative hypothesis. Current use of notebooks do not seem to support
-such diverse needs as notebook output \emph{elements} (e.g.~figures and
-tables) from \emph{parts} of the analysis are not easily reproducible.
-This issue essentially applies to all coding languages.
+less experience. Shiny has been widely adopted to share research output
+and engage stakeholders since its conception in 2013. A recent review
+\citep{Kasprzak} shows that bioinformatics is the subject with the most
+Shiny apps published in journals while earth and environmental science
+ranks second. Shiny apps are especially helpful to create reproducible
+analysis \citep[e.g.~examples in][]{Hollaway2020} and explore different
+scenarios \citep[e.g.][]{Whateley2015, Mose2018}. Finally, the
+interactivity of Shiny apps makes it an excellent tool for teaching
+\citep[e.g.][]{Williams2017, adventr}. However, not all users fit nicely
+into this dichotomy. Some users may only want to adopt a small fraction
+of an analysis for their work, while others may simply want to modify a
+few parts of the analysis in order to test an alternative hypothesis.
+Current use of notebooks do not seem to support such diverse needs as
+notebook output \emph{elements} (e.g.~figures and tables) from
+\emph{parts} of the analysis are not easily reproducible. This issue
+essentially applies to all coding languages.
 
 One potential way to address the problem described above is to allow
 users to experiment with the code in a protected computing environment.
 This is not limited to creating instances for users to re-run the entire
 code. Rather, this can also be done by exposing specific parts of a
 notebook as editable and executable code boxes, as seen in many
-interactive tutorial webpages for various coding languages. Recenty,
+interactive tutorial webpages for various coding languages. Recently,
 while discussing next steps for fostering reproducible research in
 artificial intelligence, \citet{Carter2019} lists creating a protected
 computing environment (`data enclave' or `sandbox') for reviewers to log
@@ -91,7 +93,7 @@ browser on demand.
 In this paper, we describe a rapid approach to create and publish R
 Markdown documents as ``interactive sandboxes'' using the
 \CRANpkg{learnr} package, with the aim to bridge the gap between a
-typical R Markdown notebook that contains the code for an analysis and a
+typical R Markdown document that contains the code for an analysis and a
 typical Shiny apps that offers interactivity. While R Markdown documents
 provides full details of the code along with text written in markdown,
 standard Shiny apps do not make it easy for users to see and interact
@@ -113,7 +115,7 @@ Pre-rendered Shiny documents
 (\url{https://rmarkdown.rstudio.com/authoring_shiny_prerendered.HTML})
 is a key enabling technology for the \CRANpkg{learnr} package since it
 allows users to specify the execution context in each code chunk of an R
-Markdown document that is used to render a R Shiny web app. Its use
+Markdown document that is used to render a Shiny web app. Its use
 circumvents the need of a full document render for each end user browser
 session so that it can load quickly. To create a \CRANpkg{learnr}
 tutorial in RStudio after \CRANpkg{learnr} is installed, the user
@@ -123,9 +125,9 @@ not different from other .Rmd files, except it requires additional chunk
 arguments to control the sandbox appearances. The two main features of
 the \CRANpkg{learnr} package are the ``exercise'' and ``quiz'' options.
 The former allow users to directly type in code, execute it, and see its
-results to test their knowlege while the latter allow other question
+results to test their knowledge while the latter allow other question
 types such as multiple choice. Both of these options include
-auto-graders, hints, and instructor feedback options. Additonal overall
+auto-graders, hints, and instructor feedback options. Additional overall
 options include setting time limits and an option to forbid users to
 skip sections. Like any Shiny apps, \CRANpkg{learnr} apps can be easily
 embedded to other webpages, as seen in \citet{rmrwr}.
@@ -143,18 +145,19 @@ reproducible research
 `sandboxes'}{Approach: Using learnr for reproducible research `sandboxes'}}\label{approach-using-learnr-for-reproducible-research-sandboxes}}
 
 \CRANpkg{learnr} allows users to create executable code boxes. Our
-approach is to publish R notebooks and serve parts of the notebooks as
-interactive sandboxes to allow users to re-create certain elements of a
-published notebook containing research outputs. We do not use the
-auto-graders and any quiz-like functionality of \CRANpkg{learnr} while
-keeping the sandboxes. Notebook authors can go through their notebook
-and select the code chunks that they would allow users to experiment
-with, while leaving the others are rendered as static code snippets.
+approach is to publish R Markdown documents and serve parts of the
+notebooks as interactive sandboxes to allow users to re-create certain
+elements of a published notebook containing research outputs. We do not
+use the auto-graders and any quiz-like functionality of \CRANpkg{learnr}
+while keeping the sandboxes. Notebook authors can go through their
+notebook and select the code chunks that they would allow users to
+experiment with, while leaving the others are rendered as static code
+snippets.
 
 Recognizing \CRANpkg{learnr} documents are themselves Shiny apps, our
 approach essentially allows the publication of notebooks in the form of
 web apps. However, unlike a typical Shiny app, users do not need to
-prepare a seprate UI (i.e.~user interface) layout. Advanced users can
+prepare a separate UI (i.e.~user interface) layout. Advanced users can
 modify the site appearance by supplying custom design in CSS files.
 
 Here, we first show the skeleton of an R Markdown (.Rmd) file for a
@@ -176,8 +179,8 @@ boxes) and a different output type in the YAML header.
 \end{figure}
 \end{Schunk}
 
-Next, we outline the steps an author needs to take to publish R
-notebooks as interactive sandboxes:
+Next, we outline the steps an author needs to take to publish notebooks
+(i.e.~R Markdown documents) as interactive sandboxes:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -193,8 +196,6 @@ notebooks as interactive sandboxes:
   \texttt{exercise=TRUE}. Make sure it has a unique chunk name. It may
   look something like this:
 \end{enumerate}
-
-\code{```{r fig2, warning=FALSE, exercise=TRUE, exercise.lines=30,fig.fullwidth=TRUE}}
 
 %\begin{tabular}{ll}
 %A & B \\
@@ -235,14 +236,14 @@ to create the research is made available to the Shiny app in a read-only
 fashion. Therefore, the authors do not have to worry about versions of
 packages of data or a different software setup. Using DataLabs'
 straightforward visual tools to publish Shiny apps, we can publish an R
-Markdown notebook with interactive code snippets to reproduce certain
+Markdown document with interactive code snippets to reproduce certain
 parts of research readily in a few clicks.
 
 \hypertarget{deployment}{%
 \subsection{Deployment}\label{deployment}}
 
 In general, \CRANpkg{learnr} tutorial apps can be published the same way
-as R Shiny web apps in Shiny servers, such as the ones provided by cloud
+as Shiny web apps in Shiny servers, such as the ones provided by cloud
 service providers or \url{https://shinyapps.io}. The \CRANpkg{learnr}
 package vignettes
 (\url{https://https://rstudio.github.io/learnr/publishing.html}) provide
@@ -250,7 +251,7 @@ additional help on deployment.
 
 We also describe our deployment of these apps in DataLabs, a UK NERC
 virtual research environment that is being developed. DataLabs is a
-collobarative virtual research environment \citep{Hollaway2020}
+collaborative virtual research environment \citep{Hollaway2020}
 (\url{https://datalab.datalabs.ceh.ac.uk/}) for environmental scientists
 to work together where data, software, and methods are all centrally
 located in projects. DataLabs provide a space for scientists from
@@ -259,9 +260,9 @@ and computer science) to work together and draw on each other's
 expertise. It includes an easy-to-use user interface where users can
 publish Shiny apps with a few clicks, and this applies to these
 notebooks with interactive code chunks as well. Importantly, when
-provisioning a instance of R Shiny, this is deployed in a Docker
+provisioning an instance of Shiny, this is deployed in a Docker
 container with read-only access to the project datastore being used for
-analysis. This allows an unprecended level of transparency as parts of
+analysis. This allows an unprecedented level of transparency as parts of
 the analysis are readily exposed for users to experiment from the exact
 environments, datasets (can be large and includes many files), and
 versions of software that created the analysis. The use of Docker
@@ -270,7 +271,7 @@ placed on what visitors can do through the use of resource constraints
 and tools such as \CRANpkg{RAppArmor} \citep{RAppArmor}. While access to
 project files is read-only, some author discretion is still advised to
 ensure that visitors should not be able to view or list any private code
-or data. We also note that future relases of \CRANpkg{learnr} will
+or data. We also note that future releases of \CRANpkg{learnr} will
 contain external exercise evaluators, so that the code sandboxes can be
 executed by an independent engine (such as Google Cloud) and give the
 benefit of not having to rely on \CRANpkg{RAppArmor}.
@@ -279,8 +280,9 @@ benefit of not having to rely on \CRANpkg{RAppArmor}.
 \subsection{Example: GB rainfall
 paper}\label{example-gb-rainfall-paper}}
 
-To demonstrate our concept, we have turned an R Markdown notebook for a
-paper we have submitted for publication into a \CRANpkg{learnr} document
+To demonstrate our concept, we have turned a notebook (i.e.~R Markdown
+document) for one of our recent papers \citep{Tso2022} into a
+\CRANpkg{learnr} document
 (\url{https://cptecn-sandboxdemo.datalabs.ceh.ac.uk/}) using the
 procedures described in the previous sections. The paper investigates
 the effect of weather and rainfall types on rainfall chemistry in the
@@ -296,8 +298,8 @@ with interactivity provided with Shiny, Shiny UI elements can be easily
 added. We repeat one of the examples by replacing the interactive code
 box with a simple selector, with minimal modification of the code
 itself. This approach to publishing Shiny apps requires significantly
-less work than typical R Shiny web apps since no UI design is needed and
-researchers can rapidly turn an R Markdown document into an R Shiny web
+less work than typical Shiny web apps since no UI design is needed and
+researchers can rapidly turn an R Markdown document into an Shiny web
 app. For some cases, the use of certain datasets may require a license,
 as in this example. A pop-up box is shown when the site is loaded and
 visitors are required to check the boxes to acknowledge the use of the
@@ -325,8 +327,9 @@ it can be easy to break it if users change something in between. Our
 approach allows users to interact with portions of the code in a guided
 and isolated manner, without the need to understand all the other parts
 of a notebook or the fear to break it (Table 1). We emphasize that R
-scripts/notebooks and Shiny apps work well for their intended uses, but
-our approach adds an additional level of accessibility to users.
+scripts/standard notebooks and Shiny apps work well for their intended
+uses, but our approach adds an additional level of accessibility to
+users.
 
 The openness and ease-to-access our approach provides can benefit many
 different stakeholders (Table 2). Researchers can more rapidly reproduce
@@ -342,8 +345,8 @@ promotes open science and make a better value of public funds.
 
 An obvious limitation of our approach is that it does not work well for
 ideal conditions where other R file formats are designed for. For
-instance, R scripts and R notebooks are much better suited for more
-complex analysis for users to adopt to their own problems. Meanwhile, R
+instance, R scripts and notebooks are much better suited for more
+complex analysis for users to adopt to their own problems. Meanwhile,
 Shiny web apps provides a much richer user experience and is most suited
 when the exposed code is generally not useful to stakeholders.
 Nevertheless, as discussed above, our approach is designed for users to
@@ -363,19 +366,19 @@ funding that develops it. However, a more rigorous funding model may be
 needed in the future to ensure provenance of these notebooks.
 
 Our approach focuses on improving reproducibility by exposing parts of R
-script for users to run them live on a R Shiny web app, leveraging the
-option to render R Markdown documents as R Shiny web apps and the
+script for users to run them live on an Shiny web app, leveraging the
+option to render R Markdown documents as Shiny web apps and the
 \CRANpkg{learnr} package. It focuses on the R scripts and R Markdown
 documents. Users, however, may want to improve reproducibility from the
-opposite direction, namely to allow outputs from an R Shiny web app to
-be reproducible outside of the Shiny context. For such a requirement, we
+opposite direction, namely to allow outputs from an Shiny web app to be
+reproducible outside of the Shiny context. For such a requirement, we
 recommend the use of the \CRANpkg{shinymeta} \citep{shinymeta} package,
 which allows users to capture the underlying code of selected output
 elements and allows users to download it as well as the underlying data
 to re-create the output in their own R instance. The \CRANpkg{shinymeta}
 approach can be more involved and requires more effort than
 \CRANpkg{learnr} so we think it is more suitable for users that are
-focusing their effort on the R Shiny app (particularly the UI). In
+focusing their effort on the Shiny app (particularly the UI). In
 summary, these two approaches complements each other and we recommend
 users to consider them to improve reproducibility of their work.
 
@@ -387,101 +390,23 @@ users to consider them to improve reproducibility of their work.
 
 \newpage
 
-\begin{longtable}[]{@{}ll@{}}
-\caption{Advantages of the proposed approach to various
-stakeholders}\tabularnewline
-\toprule
-\begin{minipage}[b]{(\columnwidth - 1\tabcolsep) * \real{0.44}}\raggedright
-Stakeholders\strut
-\end{minipage} &
-\begin{minipage}[b]{(\columnwidth - 1\tabcolsep) * \real{0.46}}\raggedright
-Advantages\strut
-\end{minipage}\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-\begin{minipage}[b]{(\columnwidth - 1\tabcolsep) * \real{0.44}}\raggedright
-Stakeholders\strut
-\end{minipage} &
-\begin{minipage}[b]{(\columnwidth - 1\tabcolsep) * \real{0.46}}\raggedright
-Advantages\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.44}}\raggedright
-Authors\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.46}}\raggedright
-\hfill\break
-\hfill\break
-• Very little extra work required in additional to writing R markdown
-document.\\
-• No experience to generate web interfaces required.\\
-• Much greater impact in research output.\\
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.44}}\raggedright
-Other researchers (those wanting to try or compare the method)\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.46}}\raggedright
-\hfill\break
-\hfill\break
-• A much more enriched experience to try methods and data and to test
-alternative hypothesis and scenarios.\\
-• No need to download data and scripts/notebooks and install packages to
-try a method.\\
-• More efficient to learn the new method.\\
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.44}}\raggedright
-Other researchers (those curious about the results)\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.46}}\raggedright
-\hfill\break
-\hfill\break
-• Try running different scenarios quickly than the published ones
-without the hassle of full knowledge of the code, downloading the code
-and data, and setting up the software environment.\\
-• Quickly reset to the published version of code snippet. No need to
-worry about breaking the code.\\
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.44}}\raggedright
-Data Centres\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.46}}\raggedright
-\hfill\break
-• A new avenue to demonstrate impact to funders if end users try methods
-or datasets hosted by them in sandboxes.\\
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.44}}\raggedright
-Funders\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.46}}\raggedright
-\hfill\break
-• Better value of investment if even small parts of a research is
-readily reproducible.\\
-• Time saving to fund related work that builds on research documented
-this way.\\
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.44}}\raggedright
-Wider research community and general public)\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 1\tabcolsep) * \real{0.46}}\raggedright
-\hfill\break
-• Promotes trust and confidence in research through transparency.\\
-\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{table}
+  \caption{Advantages of the proposed approach over existing approaches}
+  \label{tbl:table1}
+  \includegraphics[width=\linewidth]{GB_notebook_table2}
+\end{table}
+
+\begin{table}
+  \caption{Advantages of the proposed approach to various stakeholders}
+  \label{tbl:table2}
+  \includegraphics[width=\linewidth]{GB_notebook_table1}
+\end{table}
 
 \hypertarget{summary-and-outlook}{%
 \subsection{Summary and outlook}\label{summary-and-outlook}}
 
 We have proposed and demonstrated a rapid approach to publish R Markdown
-notebooks as interactive sandboxes to allow users to experiment with
+documents as interactive sandboxes to allow users to experiment with
 changes with various elements of a research output. It provides an
 additional level of abstraction for users to interact with research
 outputs and the codes that generates down. Since it can be linked to the
@@ -489,9 +414,9 @@ environment and data that generated the published output and has
 independent document object identifiers (DOI), it is a suitable
 candidate to preserve research workflow while exposing parts of it to
 allow rapid experimentation by users. Our work is a demonstration on how
-we may publish a notebook from virtual research environments such as
+a notebook may be published from virtual research environments such as
 DataLabs, with data, packages, and workflow pre-loaded in a coding
-envrionment, accompanied by rich narratives. While this paper outlines
+environment, accompanied by rich narratives. While this paper outlines
 the approach using R, the same approach can benefit other coding
 languages such as Python. In fact, this can already be achieved as
 \CRANpkg{learnr} can run Python chunks (as well as other execution
@@ -521,104 +446,6 @@ Natural Environment Research Council (NERC) as National Capability
 (award number NE/R016429/1). The initial development work of DataLabs
 was supported by a NERC Capital bid as part of the Environmental Data
 Services (EDS).
-
-\begin{longtable}[]{@{}lll@{}}
-\caption{Advantages of the proposed approach to existing
-approaches}\tabularnewline
-\toprule
-\begin{minipage}[b]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-Technology\strut
-\end{minipage} &
-\begin{minipage}[b]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-Potential Issues\strut
-\end{minipage} &
-\begin{minipage}[b]{(\columnwidth - 2\tabcolsep) * \real{0.35}}\raggedright
-How our approach can help?\strut
-\end{minipage}\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-\begin{minipage}[b]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-Technology\strut
-\end{minipage} &
-\begin{minipage}[b]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-Potential Issues\strut
-\end{minipage} &
-\begin{minipage}[b]{(\columnwidth - 2\tabcolsep) * \real{0.35}}\raggedright
-How our approach can help?\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-R script\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-\hfill\break
-\hfill\break
-• Limited narrative. Needs to run all the scripts.\\
-\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.35}}\raggedright
-\hfill\break
-\hfill\break
-• Much richer narrative and interactive experience.\\
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-Static notebooks\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-\hfill\break
-\hfill\break
-• Needs to download the code, data and package to try it out.\\
-\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.35}}\raggedright
-\hfill\break
-\hfill\break
-• Can instantly try out the code in a controlled manner, using the
-published data/packages/software environment.\\
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-Web apps (e.g. R Shiny)\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-\hfill\break
-\hfill\break
-• While web apps helpful to some stakeholders, it can be too high-level
-to some.\\
-• Lots of extra work to create web interface.\\
-• Does not expose the code to generate results.\\
-\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.35}}\raggedright
-\hfill\break
-\hfill\break
-• Users can interact with the code within the code snippet sandboxes
-themselves.\\
-• The published version of the code is shown to users.\\
-• Users can run the code snippets live.\\
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-Binder/Google Colab\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.22}}\raggedright
-\hfill\break
-• Users change the entire notebook.\\
-• Users need to run all cells about the section they are interested
-in.\\
-\strut
-\end{minipage} &
-\begin{minipage}[t]{(\columnwidth - 2\tabcolsep) * \real{0.35}}\raggedright
-\hfill\break
-• A much more enriched and guided experience.\\
-• Users can choose to only run the sandboxes they are interested in.\\
-\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
 
 \bibliography{sandbox.bib}
 
@@ -684,8 +511,8 @@ Lancaster Environment Centre\\ Lancaster LA1 4YQ, United Kingdom\\
 
 \address{%
 Gordon Blair\\
-School of Computing and Communications, Lancaster University\\%
-InfoLab21\\ Lancaster LA1 4WA, United Kingdom\\
+UK Centre for Ecology and Hydrology\\%
+Lancaster Environment Centre\\ Lancaster LA1 4YQ, United Kingdom\\
 %
 %
 \textit{ORCiD: \href{https://orcid.org/0000-0001-6212-1906}{0000-0001-6212-1906}}\\%
