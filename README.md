@@ -1,7 +1,7 @@
 # RJsandboxweb
 Web version of R Journal article submission
 
-https://cmtso.github.io/RJsandboxweb/sandbox
+https://cmtso.github.io/RJsandboxweb/sandbox (HTML version)
 
 https://github.com/cmtso/RJsandboxweb/blob/main/RJwrapper.pdf (PDF)
 
