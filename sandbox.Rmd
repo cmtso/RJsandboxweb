@@ -70,8 +70,8 @@ preamble: |
 bibliography: sandbox.bib
 #output: rticles::rjournal_article  # this works!
 output: 
-  rjtools::rjournal_pdf_article:
   rjtools::rjournal_web_article:
+  rjtools::rjournal_pdf_article:
   rticles::rjournal_article:
 header-includes:
    - \usepackage{subfig} # not needed, only needed for latex subfig for fig.subcap
@@ -185,21 +185,77 @@ knitr::include_graphics('learnr_abstraction.png')
 
 \newpage
 
-```{=latex}
-\begin{table}
-  \caption{Advantages of the proposed approach over existing approaches}
-  \label{tbl:table1}
-  \includegraphics[width=\linewidth]{GB_notebook_table2}
-\end{table}
+<!-- ```{=latex} -->
+<!-- \begin{table} -->
+<!--   \caption{Advantages of the proposed approach over existing approaches} -->
+<!--   \label{tbl:table1} -->
+<!--   \includegraphics[width=\linewidth]{GB_notebook_table2} -->
+<!-- \end{table} -->
+<!-- ``` -->
+
+<!-- ```{=latex} -->
+<!-- \begin{table} -->
+<!--   \caption{Advantages of the proposed approach to various stakeholders} -->
+<!--   \label{tbl:table2} -->
+<!--   \includegraphics[width=\linewidth]{GB_notebook_table1} -->
+<!-- \end{table} -->
+<!-- ``` -->
+
+
+```{r table1,  echo=FALSE, warning=FALSE, message=FALSE, results='hide'}
+require(pander)
+require(dplyr)
+panderOptions('digits', 3)
+panderOptions('round', 3)
+panderOptions('keep.trailing.zeros', TRUE)
+panderOptions('keep.line.breaks', TRUE)
+table1 = tibble( Stakeholders= c("Authors", "Other researchers (those wanting to try or compare the method)",
+                                 "Other researchers (those curious about the results)",
+                                 "Data Centres",
+                                 "Funders",
+                                 "Wider research community and general public)"),
+                 Advantages = c(" 
+                                     \\\n
+                                     \\\n &bullet; Very little extra work required in additional to writing R markdown document.
+                                      \\\n &bullet; No experience to generate web interfaces required.
+                                      \\\n &bullet; Much greater impact in research output.\\\n ",
+                                '
+                                     \\\n
+                                     \\\n &bullet; A much more enriched experience to try methods and data and to test alternative hypothesis and scenarios.
+                                     \\\n &bullet; No need to download data and scripts/notebooks and install packages to try a method.
+                                     \\\n &bullet; More efficient to learn the new method.\\\n 
+                                    ','
+                                     \\\n
+                                     \\\n &bullet; Try running different scenarios quickly than the published ones without the hassle of full knowledge of the code, downloading the code and data, and setting up the software environment.
+                                     \\\n &bullet; Quickly reset to the published version of code snippet. No need to worry about breaking the code.\\\n 
+
+                                    ','
+                                     \\\n &bullet; A new avenue to demonstrate impact to funders if end users try methods or datasets hosted by them in sandboxes.\\\n 
+                                    ','
+                                     \\\n &bullet; Better value of investment if even small parts of a research is readily reproducible.
+                                     \\\n &bullet; Time saving to fund related work that builds on research documented this way.\\\n 
+
+                                    ','
+                                     \\\n &bullet; 	Promotes trust and confidence in research through transparency.\\\n 
+                                    ')) 
+
 ```
 
-```{=latex}
-\begin{table}
-  \caption{Advantages of the proposed approach to various stakeholders}
-  \label{tbl:table2}
-  \includegraphics[width=\linewidth]{GB_notebook_table1}
-\end{table}
+``` {r table1-descriptionsb, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE, include=TRUE}
+cap1 = function(is_latex){
+  if(is_latex==TRUE) {
+    "Advantages of the proposed approach to various stakeholders"} else{
+    "Table 1: Advantages of the proposed approach to various stakeholders"
+  }}
+
+pandoc.table(table1, style = "multiline", justify = "left", caption = cap1(knitr::is_latex_output()) )
 ```
+<!-- if(knitr::is_latex_output()==TRUE) {"Advantages of the proposed approach to various stakeholders"} else{"Table 1: Advantages of the proposed approach to various stakeholders"} -->
+``` {r table1-descriptions, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE, include=FALSE}
+
+pandoc.table(table1, style = "multiline", justify = "left", caption = 'abc' )
+```
+
 
 
 ## Summary and outlook
@@ -209,6 +265,50 @@ We have proposed and demonstrated a rapid approach to publish R Markdown documen
 
 ## Data availability and acknowledgments
 The GB rainfall example notebook is accessible via this URL (https://cptecn-sandboxdemo.datalabs.ceh.ac.uk/) and the R Markdown file is deposited in the NERC Environmental Information Data Centre (EIDC) [@EIDC]. The DataLab code stack is available at https://github.com/NERC-CEH/datalab. We thank the DataLabs developers (especially Iain Walmsley, UKCEH) for the assistance to deploy interactive R Markdown documents on DataLabs. This work is supported by NERC Grant NE/T006102/1, Methodologically Enhanced Virtual Labs for Early Warning of Significant or Catastrophic Change in Ecosystems: Changepoints for a Changing Planet, funded under the Constructing a Digital Environment Strategic Priority Fund. Additional support is provided by the UK Status, Change and Projections of the Environment (UK-SCAPE) programme started in 2018 and is funded by the Natural Environment Research Council (NERC) as National Capability (award number NE/R016429/1). The initial development work of DataLabs was supported by a NERC Capital bid as part of the Environmental Data Services (EDS).
+
+```{r table2,  echo=FALSE, warning=FALSE, message=FALSE, results='hide'}
+table2 = tibble( Technology= c("R script","Static notebooks","Web apps (e.g. Shiny)","Binder/Google Colab"),
+                 `Potential Issues` = c('
+                                     \\\n
+                                     \\\n &bullet; Limited narrative. Needs to run all the scripts.\\\n 
+                                    ','
+                                     \\\n
+                                     \\\n &bullet; Needs to download the code, data and package to try it out.\\\n 
+                                    ','
+                                     \\\n
+                                     \\\n &bullet; While web apps helpful to some stakeholders, it can be too high-level to some.
+                                     \\\n &bullet; Lots of extra work to create web interface.
+                                     \\\n &bullet; Does not expose the code to generate results.\\\n 
+                                    ','
+                                     \\\n &bullet; Users change the entire notebook.
+                                     \\\n &bullet; Users need to run all cells about the section they are interested in.\\\n 
+                                    '),
+                 `How our approach can help?` = c('  
+                                      \\\n
+                                     \\\n &bullet; Much richer narrative and interactive experience.\\\n 
+                                    ','
+                                     \\\n
+                                     \\\n &bullet; Can instantly try out the code in a controlled manner, using the published data/packages/software environment.\\\n 
+                                    ','
+                                     \\\n
+                                     \\\n &bullet; Users can interact with the code within the code snippet sandboxes themselves.
+                                     \\\n &bullet; The published version of the code is shown to users.
+                                     \\\n &bullet; Users can run the code snippets live.\\\n 
+                                    ','
+                                     \\\n &bullet; A much more enriched and guided experience.
+                                     \\\n &bullet; Users can choose to only run the sandboxes they are interested in.\\\n 
+                                    ')) 
+
+```
+
+``` {r table2-descriptions, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE, include=TRUE}
+cap2 = function(is_latex){
+  if(is_latex==TRUE) {
+    "Advantages of the proposed approach to existing approaches"} else{
+    "Table 2: Advantages of the proposed approach to existing approaches"
+  }}
+pandoc.table(table2, style = "grid", justify = "left", split.tables=Inf, split.cells = c(4, 10, 10), caption = cap2(knitr::is_latex_output()))
+```
 
 
 
