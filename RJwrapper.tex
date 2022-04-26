@@ -1,25 +1,24 @@
+%% Just added files from R Project to Overleaf.
+%% Windows troubleshoot: https://tex.stackexchange.com/questions/125274/error-font-ts1-zi4r-at-540-not-found
+%% windos: remove .bib in .tex and .aux files
 \documentclass[a4paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{RJournal}
 \usepackage{amsmath,amssymb,array}
 \usepackage{booktabs}
-
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-% Pandoc citation processing
-
-% Any extra LaTeX you need in the preamble
+\usepackage{ulem} % do online latexdiff https://3142.nl/latex-diff/
 \usepackage{colortbl}
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage{verbatim}
 \usepackage{longtable}
-\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
+\usepackage{soul}
+\usepackage{color}
 
-\usepackage{subfig}
+
+%% load any required packages here
 
 \begin{document}
 
@@ -30,8 +29,9 @@
 \year{20ZZ}
 \month{AAAA}
 
+%% replace RJtemplate with your article
 \begin{article}
-  \input{sandbox}
+  \input{sandbox} 
 \end{article}
 
 \end{document}

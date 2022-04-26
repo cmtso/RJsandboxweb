@@ -10,7 +10,7 @@
 G.~S. Blair, P.~Henrys, A.~Leeson, J.~Watkins, E.~Eastoe, S.~Jarvis, and P.~J.
   Young.
 \newblock {Data Science of the Natural Environment: A Research Roadmap}.
-\newblock \emph{Frontiers in Environmental Science}, 7, aug 2019.
+\newblock \emph{Frontiers in Environmental Science}, 7, 2019.
 \newblock ISSN 2296-665X.
 \newblock \doi{10.3389/fenvs.2019.00121}.
 \newblock URL
@@ -21,7 +21,7 @@ G.~S. Blair, P.~Henrys, A.~Leeson, J.~Watkins, E.~Eastoe, S.~Jarvis, and P.~J.
 R.~E. Carter, Z.~I. Attia, F.~Lopez-Jimenez, and P.~A. Friedman.
 \newblock Pragmatic considerations for fostering reproducible research in
   artificial intelligence.
-\newblock \emph{npj Digital Medicine}, 2\penalty0 (1), May 2019.
+\newblock \emph{npj Digital Medicine}, 2\penalty0 (1), 2019.
 \newblock \doi{10.1038/s41746-019-0120-2}.
 \newblock URL \url{https://doi.org/10.1038/s41746-019-0120-2}.
 
@@ -54,7 +54,7 @@ P.~Higgins.
 M.~J. Hollaway, G.~Dean, G.~S. Blair, M.~Brown, P.~A. Henrys, and J.~Watkins.
 \newblock Tackling the challenges of 21st-century open science and beyond: A
   data science lab approach.
-\newblock \emph{Patterns}, 1\penalty0 (7):\penalty0 100103, Oct. 2020.
+\newblock \emph{Patterns}, 1\penalty0 (7):\penalty0 100103, 2020.
 \newblock \doi{10.1016/j.patter.2020.100103}.
 \newblock URL \url{https://doi.org/10.1016/j.patter.2020.100103}.
 
@@ -62,8 +62,9 @@ M.~J. Hollaway, G.~Dean, G.~S. Blair, M.~Brown, P.~A. Henrys, and J.~Watkins.
   Timmins]{Kasprzak}
 P.~Kasprzak, L.~Mitchell, O.~Kravchuk, and A.~Timmins.
 \newblock Six years of shiny in research - collaborative development of web
-  tools in r.
+  tools in {R}.
 \newblock \emph{R Journal}, \penalty0 (3):\penalty0 155--162, 2021.
+\newblock \doi{10.32614/RJ-2021-004}.
 \newblock URL
   \url{https://journal.r-project.org/archive/2021/RJ-2021-009/RJ-2021-009.pdf}.
 
@@ -95,10 +96,11 @@ S.~Stall, L.~Yarmey, J.~Cutcher-Gershenfeld, B.~Hanson, K.~Lehnert, B.~Nosek,
   M.~Parsons, E.~Robinson, and L.~Wyborn.
 \newblock {Make scientific data FAIR}, 2019.
 \newblock ISSN 14764687.
+\newblock URL \url{https://10.1038/d41586-019-01720-7}.
 
 \bibitem[Tso(2022)]{EIDC}
 C.-H.~M. Tso.
-\newblock Shiny sandbox app demonstrator for advancing reproducible research.
+\newblock R shiny sandbox app demonstrator for advancing reproducible research.
 \newblock NERC Environmental Information Data Centre. (Model).
   \url{https://doi.org/10.5285/df57b002-2a42-4a7d-854f-870dd867618c}, 2022.
 \newblock URL
@@ -111,18 +113,17 @@ C.-H.~M. Tso, D.~Monteith, T.~Scott, H.~Watson, B.~Dodd, M.~G. Pereira,
   G.~Blair.
 \newblock {The evolving role of weather types on rainfall chemistry under large
   reductions in pollutant emissions}.
-\newblock \emph{Environmental Pollution}, 299:\penalty0 118905, apr 2022.
+\newblock \emph{Environmental Pollution}, 299:\penalty0 118905, 2022.
 \newblock ISSN 02697491.
 \newblock \doi{10.1016/j.envpol.2022.118905}.
-\newblock URL
-  \url{https://linkinghub.elsevier.com/retrieve/pii/S0269749122001191}.
+\newblock URL \url{https:// 10.1016/j.envpol.2022.118905}.
 
 \bibitem[Whateley et~al.(2015)Whateley, Walker, and Brown]{Whateley2015}
 S.~Whateley, J.~D. Walker, and C.~Brown.
 \newblock A web-based screening model for climate risk to water supply systems
   in the northeastern united states.
 \newblock \emph{Environmental Modelling {\&} Software}, 73:\penalty0 64--75,
-  Nov. 2015.
+  2015.
 \newblock \doi{10.1016/j.envsoft.2015.08.001}.
 \newblock URL \url{https://doi.org/10.1016/j.envsoft.2015.08.001}.
 
@@ -149,13 +150,13 @@ M.~D. Wilkinson, M.~Dumontier, I.~J. Aalbersberg, G.~Appleton, M.~Axton,
 \newblock \emph{Scientific Data}, 2016.
 \newblock ISSN 20524463.
 \newblock \doi{10.1038/sdata.2016.18}.
+\newblock URL \url{https://10.1038/sdata.2016.18}.
 
 \bibitem[Williams and Williams(2017)]{Williams2017}
 I.~J. Williams and K.~K. Williams.
 \newblock Using an {R} shiny to enhance the learning experience of confidence
   intervals.
-\newblock \emph{Teaching Statistics}, 40\penalty0 (1):\penalty0 24--28, Nov.
-  2017.
+\newblock \emph{Teaching Statistics}, 40\penalty0 (1):\penalty0 24--28, 2017.
 \newblock \doi{10.1111/test.12145}.
 \newblock URL \url{https://doi.org/10.1111/test.12145}.
 
