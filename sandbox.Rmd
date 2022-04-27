@@ -85,9 +85,9 @@ knitr::opts_chunk$set(out.width = "\\textwidth")
 ## Introduction
 
 
-There has been considerable recognition of the need to promote open and reproducible science in the past decade. The FAIR principles [@Wilkinson2016a; @Stall2019] (https://www.go-fair.org/fair-principles/) of reproducible research are now known to most scientists. While significant advances has been made through the adoption of various best practices and policies (e.g.~requirements from funders and publishers to archive data and source code, metadata standards), there remains considerable barriers to further advance open science and meet reproducible science needs. One of such issues the availability of various levels of abstraction of the same underlying analysis and code base to collaborate and engage with different stakeholders of diverse needs [@Blair2019; @Hollaway2020]. For complex analysis or analysis that utilize a more advanced computing environment, it is essential to provide the capability to allow users to interact with the analysis at a higher level.
+There has been considerable recognition of the need to promote open and reproducible science in the past decade. The FAIR principles [@Wilkinson2016a; @Stall2019] (https://www.go-fair.org/fair-principles/) of reproducible research are now known to most scientists. While significant advances has been made through the adoption of various best practices and policies (e.g. requirements from funders and publishers to archive data and source code, metadata standards), there remains considerable barriers to further advance open science and meet reproducible science needs. One of such issues the availability of various levels of abstraction of the same underlying analysis and code base to collaborate and engage with different stakeholders of diverse needs [@Blair2019; @Hollaway2020]. For complex analysis or analysis that utilize a more advanced computing environment, it is essential to provide the capability to allow users to interact with the analysis at a higher level.
 
-Existing approach to reproducible research focuses on either documenting an entire analysis or allows user-friendly interaction. Within the R ecosystem, R scripts and notebooks allow researchers to work together and to view the entire workflow, while R Shiny apps [@shiny] allows rapid showcase of methods and research outcomes to users with less experience. R Shiny has been widely adopted to share research output and engage stakeholders since its conception in 2013. A recent review [@Kasprzak] shows that bioinformatics is the subject with the most Shiny apps published in journals while earth and environmental science ranks second. Shiny apps are especially helpful to create reproducible analysis [e.g. examples in @Hollaway2020] and explore different scenarios [e.g. @Whateley2015; @Mose2018]. Finally, the interactivity of Shiny apps makes it an excellent tool for teaching [e.g. @Williams2017; @adventr]. However, not all users fit nicely into this dichotomy. Some users may only want to adopt a small fraction of an analysis for their work, while others may simply want to modify a few parts of the analysis in order to test alternative hypothesis. Current use of notebooks do not seem to support such diverse needs as notebook output \textit{elements} (e.g.~figures and tables) are not easily reproducible. This issue essentially applies to all coding languages.
+Existing approach to reproducible research focuses on either documenting an entire analysis or allows user-friendly interaction. Within the R ecosystem, R scripts and notebooks allow researchers to work together and to view the entire workflow, while R Shiny apps [@shiny] allows rapid showcase of methods and research outcomes to users with less experience. R Shiny has been widely adopted to share research output and engage stakeholders since its conception in 2013. A recent review [@Kasprzak] shows that bioinformatics is the subject with the most Shiny apps published in journals while earth and environmental science ranks second. Shiny apps are especially helpful to create reproducible analysis [e.g. examples in @Hollaway2020] and explore different scenarios [e.g. @Whateley2015; @Mose2018]. Finally, the interactivity of Shiny apps makes it an excellent tool for teaching [e.g. @Williams2017; @adventr]. However, not all users fit nicely into this dichotomy. Some users may only want to adopt a small fraction of an analysis for their work, while others may simply want to modify a few parts of the analysis in order to test alternative hypothesis. Current use of notebooks do not seem to support such diverse needs as notebook output \textit{elements} (e.g. figures and tables) are not easily reproducible. This issue essentially applies to all coding languages.
 
 One potential way to address the problem described above is to allow
 users to experiment with the code in protected computing environment.
@@ -132,11 +132,11 @@ document as executable code boxes.
 \pkg{learnr} [@learnr] is an R package developed by RStudio to
 rapidly create interactive tutorials. It follows the general \textit{R
 Markdown} (the file has .Rmd extensions,
-\url{https://rmarkdown.rstudio.com/index.html}) architecture and
+https://rmarkdown.rstudio.com/index.html) architecture and
 essentially creates a pre-rendered Shiny document similar to the way
 Shiny user interface (UI) components can be added to any R Markdown documents.
 Pre-rendered Shiny documents
-(\url{https://rmarkdown.rstudio.com/authoring_shiny_prerendered.HTML})
+(https://rmarkdown.rstudio.com/authoring_shiny_prerendered.HTML)
 is a key enabling technology for the \pkg{learnr} package since it
 allows users to specify the execution context in each code chunk of a R
 Markdown document that is used to render a R Shiny web app. Its use
@@ -176,7 +176,7 @@ while the others are rendered as static code snippets.
 Recognizing \pkg{learnr} documents are themselves R Shiny web apps,
 our approach essentially allows the publication of notebooks in the form
 of web apps. However, unlike a typical R Shiny web app, users do not
-need to prepare a separate UI (i.e.~user interface) layout. Advanced
+need to prepare a separate UI (i.e. user interface) layout. Advanced
 users can modify the site appearance by supplying custom design in .css
 files.
 
@@ -185,7 +185,7 @@ Here, we first show the skeleton of a R Markdown (.Rmd) file for a
 a typical .Rmd file where there is a mixture of narratives written in
 markdown and R code chunks, in addition to a YAML header. However,
 there are a couple of important exceptions, namely the use of the
-"exercise" chunk option (i.e.~editable and executable code boxes)
+"exercise" chunk option (i.e. editable and executable code boxes)
 and different output type in the YAML header.
 
 
@@ -204,7 +204,7 @@ Next, we outline the steps an author needs to take to publish notebooks (i.e. R 
 2. Open a new \pkg{learnr} R Markdown template. Copy the content of the original notebook
 3. For the code chunks that you would like to become sandboxes, add `exercise=TRUE`. Make sure it has a unique chunk name. It may look something like this: 
 
-<!-- *```{r fig2, warning=FALSE, exercise=TRUE, exercise.lines=30,fig.fullwidth=TRUE}* -->
+<!-- *```{r fig2, warning=FALSE, exercise=TRUE, exercise.lines=30, fig.fullwidth=TRUE}* -->
 
 `r if(knitr::is_latex_output()==FALSE) {paste0("'''","*{r fig2, warning=FALSE, exercise=TRUE, exercise.lines=30,fig.fullwidth=TRUE}*")}`
 
@@ -215,10 +215,10 @@ Next, we outline the steps an author needs to take to publish notebooks (i.e. R 
 %A & B \\
 %\end{tabular}
 
-%\code{```\{r fig2, warning=FALSE, exercise=TRUE, exercise.lines=30,fig.fullwidth=TRUE\}}
+%\code{```\{r fig2, warning=FALSE, exercise=TRUE, exercise.lines=30, fig.fullwidth=TRUE\}}
 
 \begin{example}
-\`\`\`\{r fig2, warning=FALSE, exercise=TRUE, exercise.lines=30,fig.fullwidth=TRUE\}
+\`\`\`\{r fig2, warning=FALSE, exercise=TRUE, exercise.lines=30, fig.fullwidth=TRUE\}
 \end{example}
 ```
 4. Before any interactive code chunks, call the first code chunk 'setup'.
@@ -248,7 +248,7 @@ parts of research readily in a few clicks.
 ## Deployment
 In general, \pkg{learnr} tutorial apps can be published the same way
 as R Shiny web apps in Shiny servers, such as the ones provided by cloud
-service providers or \url{https://shinyapps.io}. The \pkg{learnr}
+service providers or https://shinyapps.io. The \pkg{learnr}
 package vignettes provide additional help on deployment.
 
 We also describe our deployment of these apps in DataLabs, a UK NERC

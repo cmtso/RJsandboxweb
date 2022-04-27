@@ -31,7 +31,7 @@ reproducible science in the past decade. The FAIR principles
 (\url{https://www.go-fair.org/fair-principles/}) of reproducible research
 are now known to most scientists. While significant advances has been
 made through the adoption of various best practices and policies
-(e.g.~requirements from funders and publishers to archive data and
+(e.g. requirements from funders and publishers to archive data and
 source code, metadata standards), there remains considerable barriers to
 further advance open science and meet reproducible science needs. One of
 such issues the availability of various levels of abstraction of the
@@ -51,7 +51,7 @@ output and engage stakeholders since its conception in 2013. A recent
 review \citep{Kasprzak} shows that bioinformatics is the subject with
 the most Shiny apps published in journals while earth and environmental
 science ranks second. Shiny apps are especially helpful to create
-reproducible analysis \citep[e.g.~examples in][]{Hollaway2020} and
+reproducible analysis \citep[e.g. examples in][]{Hollaway2020} and
 explore different scenarios \citep[e.g.][]{Whateley2015, Mose2018}.
 Finally, the interactivity of Shiny apps makes it a excellent tool for
 teaching\citep[e.g.][]{Williams2017, adventr}. However, not all users
@@ -59,7 +59,7 @@ fit nicely into this dichotomy. Some users may only want to adopt a
 small fraction of an analysis for their work, while others may simply
 want to modify a few parts of the analysis in order to test alternative
 hypothesis. Current use of notebooks do not seem to support such diverse
-needs as notebook output \textit{elements} (e.g.~figures and tables) are
+needs as notebook output \textit{elements} (e.g. figures and tables) are
 not easily reproducible. This issue essentially applies to all coding
 languages.
 
@@ -71,7 +71,7 @@ notebook as editable and executable code boxes, as seen in many
 interactive tutorial web pages for various coding languages. Recently,
 while discussing next steps for fostering reproducible research in
 artificial intelligence, \citet{Carter2019} lists creating a protected
-computing environment (`data enclave' or `sandbox') for reviewers to log
+computing environment ('data enclave' or 'sandbox') for reviewers to log
 in and explore as one of the solutions. In software engineering, a
 sandbox is a testing environment that isolates untested code changes and
 outright experimentation from the production environment or repository,
@@ -88,7 +88,7 @@ generates the research outputs at the convenience of their own web browser
 on demand.
 
 In this paper, we describe a rapid approach to create and publish
-``interactive sandboxes'' R Shiny apps from R Markdown documents using
+'interactive sandboxes' R Shiny apps from R Markdown documents using
 the \pkg{learnr} package, with the aim to bridge the gap between
 typical R Markdown notebook and typical Shiny apps in terms of levels of
 abstraction. While code and markdown documents gives full details of the
@@ -154,7 +154,7 @@ while the others are rendered as static code snippets.
 Recognizing \pkg{learnr} documents are themselves R Shiny web apps,
 our approach essentially allows the publication of notebooks in the form
 of web apps. However, unlike a typical R Shiny web app, users do not
-need to prepare a separate UI (i.e.~user interface) layout. Advanced
+need to prepare a separate UI (i.e. user interface) layout. Advanced
 users can modify the site appearance by supplying custom design in .css
 files.
 
@@ -163,7 +163,7 @@ Here, we first show the skeleton of a R Markdown (.Rmd) file for a
 a typical .Rmd file where there is a mixture of narratives written in
 markdown and R code chunks, in addition to a YAML header. However,
 there are a couple of important exceptions, namely the use of the
-`exercise` chunk option (i.e.~editable and executable code boxes)
+`exercise` chunk option (i.e. editable and executable code boxes)
 and different output type in the YAML header.
 
 \begin{figure}
@@ -181,7 +181,7 @@ notebooks as interactive sandboxes:
 \tightlist
 \item
   All research output is included in the form of a well-documented R
-  Markdown document
+  Markdown document.
 \item
   Open a new \pkg{learnr} R Markdown template. Copy the content of
   the original notebook
@@ -197,7 +197,7 @@ notebooks as interactive sandboxes:
 %\end{tabular}
 
 \begin{example}
-```\{r fig2, warning=FALSE, exercise=TRUE, exercise.lines=30,fig.fullwidth=TRUE\}
+```{r fig2, warning=FALSE, exercise=TRUE, exercise.lines=30, fig.fullwidth=TRUE}
 \end{example}
 
 \begin{enumerate}
@@ -205,12 +205,12 @@ notebooks as interactive sandboxes:
 \setcounter{enumi}{3}
 \tightlist
 \item
-  Before any interactive code chunks, call the first code chunk `setup'.
+  Before any interactive code chunks, call the first code chunk 'setup'.
   This will pre-load everything that will be used later.
 \item
   Check whether you would like to link any of the interactive code
   snippets (by default each of them are independent, and only depends on
-  the output of the `setup' chunk) You may want to modify your code
+  the output of the 'setup' chunk) You may want to modify your code
   chunks accordingly.
 \item
   Done! Knit the notebook to view outputs as an interactive web page.
@@ -235,7 +235,7 @@ parts of research readily in a few clicks.
 \hypertarget{deployment}{%
 \subsection{Deployment}\label{deployment}}
 
-In general, \CRANpkg{learnr} tutorial apps can be published the same way
+In general, \pkg{learnr} tutorial apps can be published the same way
 as R Shiny web apps in Shiny servers, such as the ones provided by cloud
 service providers or \url{https://shinyapps.io}. The \pkg{learnr}
 package vignettes provide additional help on deployment.
@@ -259,7 +259,7 @@ environments, datasets (can be large and includes many files), and
 versions of software that created the analysis. The use of Docker
 deployed onto a Kubernetes infrastructure allows strict limits to be
 placed on what visitors can do through the use of resource constraints
-and tools such as \pkg{RAppArmor} \citep{RAppArmor}. While access to
+and tools such as \CRANpkg{RAppArmor} \citep{RAppArmor}. While access to
 project files is read-only, some author discretion is still advised to
 ensure that visitors should not be able to view or list any private code
 or data. We also note that future releases of \pkg{learnr} will
@@ -308,7 +308,7 @@ existing approaches in terms of levels of abstraction. While code and
 markdown documents gives full details of the code, standard R Shiny apps
 has too much limitations on users to interact with the code (Figure 3)
 and users often cannot see the underlying code. Recently, it has become
-popular to publish `live' Jupyter notebooks on Binder and Google Colab.
+popular to publish 'live' Jupyter notebooks on Binder and Google Colab.
 While this is a great contribution to open science, users are still
 required to run and go through the entire notebook step-by-step and
 it can be easy to break it if users change something in between. Our
@@ -397,52 +397,52 @@ Advantages\strut
 \begin{minipage}[t]{0.42\columnwidth}\raggedright
 Authors\strut
 \end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
-. Very little extra work required in additional to writing R markdown
+• Very little extra work required in additional to writing R markdown
 document.\\
-. No experience to generate web interfaces required.\\
-. Much greater impact in research output.\\
+• No experience to generate web interfaces required.\\
+• Much greater impact in research output.\\
 \strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.42\columnwidth}\raggedright
 Other researchers (those wanting to try or compare the method)\strut
 \end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
-. A much more enriched experience to try methods and data and to test
+• A much more enriched experience to try methods and data and to test
 alternative hypothesis and scenarios.\\
-. No need to download data and scripts/notebooks and install packages to
+• No need to download data and scripts/notebooks and install packages to
 try a method.\\
-. More efficient to learn the new method.\\
+• More efficient to learn the new method.\\
 \strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.42\columnwidth}\raggedright
 Other researchers (those curious about the results)\strut
 \end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
-. Try running different scenarios quickly than the published ones
+• Try running different scenarios quickly than the published ones
 without the hassle of full knowledge of the code, downloading the code
 and data, and setting up the software environment.\\
-. Quickly reset to the published version of code snippet. No need to
+• Quickly reset to the published version of code snippet. No need to
 worry about breaking the code.\\
 \strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.42\columnwidth}\raggedright
 Data Centres\strut
 \end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
-. A new avenue to demonstrate impact to funders if end users try methods
+• A new avenue to demonstrate impact to funders if end users try methods
 or datasets hosted by them in sandboxes.\\
 \strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.42\columnwidth}\raggedright
 Funders\strut
 \end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
-. Better value of investment if even small parts of a research is
+• Better value of investment if even small parts of a research is
 readily reproducible.\\
-. Time saving to fund related work that builds on research documented
+• Time saving to fund related work that builds on research documented
 this way.\\
 \strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.42\columnwidth}\raggedright
 Wider research community and general public)\strut
 \end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
-. Promotes trust and confidence in research through transparency.\\
+• Promotes trust and confidence in research through transparency.\\
 \strut
 \end{minipage}\tabularnewline
 \bottomrule
@@ -474,46 +474,46 @@ How our approach can help?\strut
 \begin{minipage}[t]{0.20\columnwidth}\raggedright
 R script\strut
 \end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
-. Limited narrative. Needs to run all the scripts.\\
+• Limited narrative. Needs to run all the scripts.\\
 \strut
 \end{minipage} & \begin{minipage}[t]{0.32\columnwidth}\raggedright
-. Much richer narrative and interactive experience.\\
+• Much richer narrative and interactive experience.\\
 \strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.20\columnwidth}\raggedright
 Static notebooks\strut
 \end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
-. Needs to download the code, data and package to try it out.\\
+• Needs to download the code, data and package to try it out.\\
 \strut
 \end{minipage} & \begin{minipage}[t]{0.32\columnwidth}\raggedright
-. Can instantly try out the code in a controlled manner, using the
+• Can instantly try out the code in a controlled manner, using the
 published data/packages/software environment.\\
 \strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.20\columnwidth}\raggedright
 Web apps ( e.g.~R Shiny)\strut
 \end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
-. While web apps helpful to some stakeholders, it can be too high-level
+• While web apps helpful to some stakeholders, it can be too high-level
 to some.\\
-. Lots of extra to create web interface.\\
-. Does not expose the code to generate results.\\
+• Lots of extra to create web interface.\\
+• Does not expose the code to generate results.\\
 \strut
 \end{minipage} & \begin{minipage}[t]{0.32\columnwidth}\raggedright
-. Users can interact with the code within the code snippet sandboxes
+• Users can interact with the code within the code snippet sandboxes
 themselves.\\
-. The published version of the code is shown to users.\\
-. Users can run the code snippets live.\\
+• The published version of the code is shown to users.\\
+• Users can run the code snippets live.\\
 \strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.20\columnwidth}\raggedright
 Binder/Google Colab\strut
 \end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
-. Users change the entire notebook.\\
-. Users need to run all cells about the section they are interested.\\
+• Users change the entire notebook.\\
+• Users need to run all cells about the section they are interested.\\
 \strut
 \end{minipage} & \begin{minipage}[t]{0.32\columnwidth}\raggedright
-. A much more enriched and guided experience.\\
-. Users can choose to only run the sandboxes they are interested.\\
+• A much more enriched and guided experience.\\
+• Users can choose to only run the sandboxes they are interested.\\
 \strut
 \end{minipage}\tabularnewline
 \bottomrule
@@ -542,16 +542,16 @@ users generate and host the document using R. This paper contributes to
 the vision towards publishing interactive notebooks as standalone
 research outputs and the advancement of open science practices.
 
-\hypertarget{data-availability-and-acknowledgments}{%
+\hypertarget{data-availability-and-acknowledgements}{%
 \subsection{Data availability and
-acknowledgments}\label{data-availability-and-acknowledgments}}
+acknowledgements}\label{data-availability-and-acknowledgments}}
 
 The GB rainfall example notebook is accessible via this URL
 (\url{https://cptecn-sandboxdemo.datalabs.ceh.ac.uk/}) and the R
-Markdown file is depositied in the NERC Environmental Information Data
+Markdown file is deposited in the NERC Environmental Information Data
 Centre (EIDC) \citep{EIDC}. The DataLab code stack is available at
 \url{https://github.com/NERC-CEH/datalab}. We thank the DataLabs
-developers team (especially Iain Walmsley, UKCEH) for the assitance to
+developers team (especially Iain Walmsley, UKCEH) for the assistance to
 deploy interactive R Markdown documents on DataLabs. This work is
 supported by NERC Grant NE/T006102/1, Methodologically Enhanced Virtual
 Labs for Early Warning of Significant or Catastrophic Change in
